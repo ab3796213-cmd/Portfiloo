@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abubakar — Associate Engineer, CIT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;0,900;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0F13; --bg-alt:#15171D; --panel:#181B22;
+    --text:#ECE8DE; --text-dim:#9AA0AC;
+    --accent:#C9962B; --line:rgba(201,150,43,0.22);
+    --radius:0; --maxw:980px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif; font-weight:700; letter-spacing:-0.01em;}
+  .label{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--accent); letter-spacing:0.04em;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.5rem;}
+  a{color:var(--text); text-decoration:none;}
+
+  /* Nav */
+  nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:rgba(14,15,19,0.88); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem;}
+  .brand{font-family:'Fraunces',serif; font-weight:900; font-size:1.2rem;}
+  .navlinks{display:flex; gap:1.8rem; font-size:0.92rem;}
+  .navlinks a{color:var(--text-dim); transition:color .2s;}
+  .navlinks a:hover{color:var(--accent);}
+  .navtoggle{display:none; background:none; border:1px solid var(--line); color:var(--text); font-size:1.2rem; width:40px; height:40px; cursor:pointer;}
+
+  /* Hero */
+  header.hero{position:relative; padding:5.5rem 0 4.5rem; border-bottom:1px solid var(--line); overflow:hidden;}
+  .circuit{position:absolute; inset:0; opacity:0.35; pointer-events:none;}
+  .hero-inner{position:relative; opacity:0; transform:translateY(14px); animation:rise .7s ease-out forwards .1s;}
+  @keyframes rise{to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){.hero-inner{animation:none; opacity:1; transform:none;}}
+  .hero h1{font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.02; margin:0.6rem 0 1rem;}
+  .hero h1 em{font-style:italic; color:var(--accent);}
+  .hero p{color:var(--text-dim); max-width:46ch; font-size:1.05rem;}
+  .hero-ctas{display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;}
+  .btn{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; padding:0.8rem 1.4rem; border:1px solid var(--line);}
+  .btn.solid{background:var(--accent); color:#15110A; border-color:var(--accent); font-weight:500;}
+  .btn:hover{border-color:var(--accent);}
+
+  section{padding:4rem 0; border-bottom:1px solid var(--line);}
+  section h2{font-size:1.9rem; margin-bottom:1.6rem;}
+
+  /* About */
+  .about p{color:var(--text-dim); max-width:68ch; font-size:1.02rem;}
+
+  /* Skills */
+  .skillgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.6rem;}
+  .skillcat h3{font-size:1.02rem; margin-bottom:0.7rem;}
+  .tags{display:flex; flex-wrap:wrap; gap:0.5rem;}
+  .tag{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--text-dim); border:1px solid var(--line); padding:0.35rem 0.6rem;}
+
+  /* Timeline */
+  .timeline{border-left:1px solid var(--line); padding-left:1.4rem; display:flex; flex-direction:column; gap:1.6rem;}
+  .tlitem .label{display:block; margin-bottom:0.2rem;}
+  .tlitem h3{font-size:1.05rem; margin-bottom:0.2rem;}
+  .tlitem p{color:var(--text-dim); font-size:0.95rem;}
+
+  /* Projects */
+  .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.4rem;}
+  .card{background:var(--panel); border:1px solid var(--line); padding:1.6rem;}
+  .card h3{font-size:1.1rem; margin-bottom:0.5rem;}
+  .card p{color:var(--text-dim); font-size:0.92rem; margin-bottom:1rem;}
+  .card .tags{margin-bottom:1rem;}
+  .card a{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--accent); border-bottom:1px solid var(--accent);}
+
+  /* Contact */
+  .contact-grid{display:flex; flex-wrap:wrap; gap:2.4rem; align-items:flex-start;}
+  .contact-grid p{color:var(--text-dim); max-width:42ch;}
+  .contactlinks{display:flex; flex-direction:column; gap:0.7rem;}
+  .contactlinks a{font-family:'IBM Plex Mono',monospace; font-size:0.92rem; color:var(--text);}
+  .contactlinks a:hover{color:var(--accent);}
+
+  footer{padding:2rem 0; text-align:center; color:var(--text-dim); font-size:0.85rem;}
+
+  @media (max-width:720px){
+    .navlinks{position:fixed; inset:0 0 0 30%; top:calc(60px + env(safe-area-inset-top,0px)); background:var(--bg); flex-direction:column; padding:2rem; border-left:1px solid var(--line); transform:translateX(100%); transition:transform .25s; }
+    .navlinks.open{transform:translateX(0);}
+    .navtoggle{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Abubakar</span>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="circuit" viewBox="0 0 980 300" preserveAspectRatio="none">
+    <g stroke="#C9962B" stroke-width="1" fill="none" opacity="0.5">
+      <path d="M0 240 H260 V160 H520 V220 H780 V100 H980"/>
+      <path d="M0 60 H140 V140 H400 V40 H700 V180 H980"/>
+      <circle cx="260" cy="240" r="3" fill="#C9962B"/>
+      <circle cx="520" cy="160" r="3" fill="#C9962B"/>
+      <circle cx="780" cy="220" r="3" fill="#C9962B"/>
+      <circle cx="400" cy="40" r="3" fill="#C9962B"/>
+      <circle cx="700" cy="180" r="3" fill="#C9962B"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <span class="label">ASSOCIATE ENGINEER — COMPUTER INFORMATION TECHNOLOGY</span>
+    <h1>Abubakar<br><em>builds things that run.</em></h1>
+    <p><!-- EDIT: one-line pitch --> A diploma-level CIT student from Awan Sharif, focused on networks, systems and clean front-end work. This site is the starting template — swap every placeholder with your own words.</p>
+    <div class="hero-ctas">
+      <a class="btn solid" href="#projects">View Projects</a>
+      <a class="btn" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about">
+    <span class="label">ABOUT</span>
+    <h2>Who I am</h2>
+    <p><!-- EDIT: 2-4 sentence bio --> I'm a diploma student in Associate Engineering (Computer Information Technology), learning the fundamentals of networking, system administration and software development. I like taking something apart to understand how it works, then rebuilding it better. Currently based in Awan Sharif, open to internships and junior roles in IT support, networking or web development.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="label">SKILLS</span>
+    <h2>What I work with</h2>
+    <div class="skillgrid">
+      <div class="skillcat">
+        <h3>Programming</h3>
+        <div class="tags"><!-- EDIT -->
+          <span class="tag">C</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">Java (basics)</span>
+        </div>
+      </div>
+      <div class="skillcat">
+        <h3>Web</h3>
+        <div class="tags"><!-- EDIT -->
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skillcat">
+        <h3>Networking &amp; Systems</h3>
+        <div class="tags"><!-- EDIT -->
+          <span class="tag">TCP/IP</span><span class="tag">Cisco Basics</span><span class="tag">Windows</span><span class="tag">Linux (basics)</span>
+        </div>
+      </div>
+      <div class="skillcat">
+        <h3>Tools</h3>
+        <div class="tags"><!-- EDIT -->
+          <span class="tag">Git</span><span class="tag">VS Code</span><span class="tag">MS Office</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <span class="label">EDUCATION</span>
+    <h2>Timeline</h2>
+    <div class="timeline">
+      <div class="tlitem">
+        <span class="label">IN PROGRESS</span>
+        <h3>Diploma of Associate Engineering — Computer Information Technology</h3>
+        <p><!-- EDIT: institute name & years --> Your Institute Name, Awan Sharif</p>
+      </div>
+      <div class="tlitem">
+        <span class="label">COMPLETED</span>
+        <h3>Matriculation / Secondary Schooling</h3>
+        <p><!-- EDIT --> Your School Name</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="label">PROJECTS</span>
+    <h2>Selected work</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Network Simulation Lab</h3>
+        <p><!-- EDIT --> Designed and tested a small LAN topology with subnetting and basic routing using Cisco Packet Tracer.</p>
+        <div class="tags"><span class="tag">Networking</span><span class="tag">Packet Tracer</span></div>
+        <a href="#">View details →</a>
+      </div>
+      <div class="card">
+        <h3>Personal Portfolio Website</h3>
+        <p><!-- EDIT --> This site — a responsive, single-page portfolio built with plain HTML, CSS and JavaScript.</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+        <a href="#">View code →</a>
+      </div>
+      <div class="card">
+        <h3>Inventory Management System</h3>
+        <p><!-- EDIT --> A simple desktop/console app to track stock in and out, built as a class project.</p>
+        <div class="tags"><span class="tag">C++</span><span class="tag">Data Structures</span></div>
+        <a href="#">View details →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="label">CONTACT</span>
+      <h2>Let's talk</h2>
+      <p><!-- EDIT --> Open to internships, freelance front-end work and IT support roles. Based in Awan Sharif — happy to work remotely too.</p>
+    </div>
+    <div class="contactlinks">
+      <a href="mailto:your.email@example.com"><!-- EDIT -->your.email@example.com</a>
+      <a href="tel:+92XXXXXXXXXX"><!-- EDIT -->+92 XXX XXXXXXX</a>
+      <a href="#"><!-- EDIT -->linkedin.com/in/abubakar</a>
+      <a href="#"><!-- EDIT -->github.com/abubakar</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Abubakar — Computer Information Technology</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var t = document.getElementById('navtoggle');
+  var n = document.getElementById('navlinks');
+  t.addEventListener('click', function(){ n.classList.toggle('open'); });
+  n.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ n.classList.remove('open'); }); });
+</script>
+</body>
+</html>
